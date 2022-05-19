@@ -1,7 +1,7 @@
 <?php
 function addMessage($login, $message){
 	if ($message !== '') {
-		$json_data = json_decode(file_get_contents('messages.json'));
+		$json_data = json_decode(file_get_contents(__DIR__ . '/messages.json'));
 		$newMessage = (object)['date' => date('d-m-y h:i:s'), 'user' => $login, 'message' => $message];
 		$json_data[] = $newMessage;
 		file_put_contents('messages.json', json_encode($json_data));
