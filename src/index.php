@@ -1,7 +1,7 @@
 <?php
 function addMessage($login, $message){
 	if ($message !== '') {
-		$json_data = json_decode(file_get_contents(__DIR__ . '/messages.json'));
+		$json_data = json_decode(file_get_contents('messages.json'));
 		$newMessage = (object)['date' => date('d-m-y h:i:s'), 'user' => $login, 'message' => $message];
 		$json_data[] = $newMessage;
 		file_put_contents('messages.json', json_encode($json_data));
@@ -46,7 +46,7 @@ printMessages();
 		<labe style="margin-left: 115px">Password:</labe>
 		<labe style="margin-left: 85px">Message:</labe>
 	</div>
-	<form action="/" method="GET">
+	<form action="/messenger/" method="GET">
 		<input name="log" value="admin">
 		<input name="pas" value="password">
 		<input name="mes">
